@@ -1,0 +1,32 @@
+package PackageOne;
+ 
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+ 
+public class questionTwoA {
+ 
+          public static void main(String[] args) {
+ 
+          WebDriver driver = new FirefoxDriver();
+                  
+          driver.get("C:\\Users\\Atul\\Documents\\foodName.html");
+WebElement   getElement1 =driver.findElement(By.xpath("html/body/div[1]/span[5]"));    
+WebElement   getElement2 =driver.findElement(By.xpath("html/body/div[1]/span[9]"));
+Kiran : getting elements by above method works fine, but not sound. Trying use span.<classname> or div.<classname> it any other robust methods. 
+
+          System.out.println(getElement1.getText());
+                  
+          System.out.println(getElement2.getText());
+                  
+          }
+ 
+         
+}
+
+/*Out Put:
+ 
+Applesauce, unsweetened
+Juice, Cranberryapple drink */
