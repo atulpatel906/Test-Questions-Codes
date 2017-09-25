@@ -1,0 +1,26 @@
+package PackageOne;
+ 
+import java.io.File;
+ 
+public class question3A {
+ 
+          public static void FileExist(String p){
+                  
+           String filepath ="C:\\\\Users\\\\Atul\\\\Documents\\\\dictonary.doc";
+                  
+                    
+                    File file = new File(filepath);
+           
+                    if ( file.exists()) {
+                    
+                             System.out.println( "File exist");
+                  
+                    }else {
+ 
+                             System.out.println( "File is not exist");
+                    
+         }
+         
+    }
+ 
+}
