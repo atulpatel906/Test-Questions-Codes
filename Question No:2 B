@@ -1,0 +1,35 @@
+package PackageOne;
+ 
+import java.util.Iterator;
+import java.util.List;
+ 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+ 
+public class questionTwoB {
+ 
+          public static void main(String[] args) {
+                  
+                   WebDriver driver = new FirefoxDriver();
+                  
+                   driver.get("C:\\Users\\Atul\\Documents\\foodName.html");
+                  
+                   WebElement tagLable = driver.findElement(By.xpath("html/body/div[1]/span[1]"));
+                  
+                   List<WebElement> names = tagLable.findElements(By.id("ng-bind"));   
+                  
+                   Iterator<WebElement> itr = names.iterator();
+                  
+                   while(itr.hasNext()) {
+                            
+                       WebElement row = itr.next();
+                      
+                       System.out.println(row.getText());
+                      
+                   }
+           
+          }
+ 
+}
