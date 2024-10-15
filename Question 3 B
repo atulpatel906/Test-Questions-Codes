@@ -3,66 +3,72 @@ package PackageOne;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
- 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
- 
- 
-public class questionThreeB {
-         
-public static void main(String[] args) throws IOException {
-       
-       
-        String filepath = System.getProperty("user.dir")+ "\\src\\";
-       
-         readExcel(filepath ,"ExcelXLSX.xlsx" , "Dictionary");
-       
-          }
- 
-   public static void readExcel(String filepath, String filename, String sheetname)throws IOException{
-       
-        File file = new File(filepath+ "\\"+filename);
-       
-        FileInputStream fis = new FileInputStream(file);
-       
-        Workbook workbook = null ;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+public class QuestionThreeB {
+
+    public static void main(String[] args) throws IOException {
+        // Construct file path using user directory and file separator for cross-platform compatibility
+        String filepath = System.getProperty("user.dir") + File.separator + "src" + File.separator;
         
+        // Read the Excel file
+        readExcel(filepath, "ExcelXLSX.xlsx", "Dictionary");
+    }
+
+    public static void readExcel(String filepath, String filename, String sheetname) throws IOException {
+        // Create file and FileInputStream objects
+        File file = new File(filepath + filename);
+        FileInputStream fis = new FileInputStream(file);
+        Workbook workbook = null;
+
+        // Check the file extension to determine which workbook to use (XLS or XLSX)
         String fileExtension = filename.substring(filename.indexOf("."));
         
-         if(fileExtension.equals(".xlsx")){
-             
-               workbook = new XSSFWorkbook(fis);
-             
-        } else if (fileExtension.equals(".xls")){
-             
-               workbook = new HSSFWorkbook(fis);
-             
+        if (fileExtension.equals(".xlsx")) {
+            workbook = new XSSFWorkbook(fis);  // For .xlsx files
+        } else if (fileExtension.equals(".xls")) {
+            workbook = new HSSFWorkbook(fis);  // For .xls files
         }
-               
-         Sheet sheet = workbook.getSheet(sheetname);
-        
-         int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
-        
-         for(int i=0;i<rowCount; i++){
-             
-              Row row = sheet.getRow(i);
-             
-               for(int j=0;j<row.getLastCellNum();j++){
-                   
-                    
-                     System.out.print(row .getCell(j).getStringCellValue());
-                   
-              }
-             
-              System. out.println();
-             
+
+        // Ensure the workbook was initialized properly
+        if (workbook == null) {
+            System.out.println("Invalid file format!");
+            return;
         }
-       
-        System. out.println("-------------------------------------------------------------------");       
-       
-  }
- 
+
+        // Access the sheet by name
+        Sheet sheet = workbook.getSheet(sheetname);
+        
+        // Get the total row count
+        int rowCount = sheet.getLastRowNum();
+
+        // Loop through each row in the sheet
+        for (int i = 0; i <= rowCount; i++) {
+            Row row = sheet.getRow(i);
+
+            // Check for null rows
+            if (row != null) {
+                // Loop through each cell in the row
+                for (int j = 0; j < row.getLastCellNum(); j++) {
+                    Cell cell = row.getCell(j);
+
+                    // Check if the cell contains a string value and print it
+                    if (cell != null && cell.getCellType() == CellType.STRING) {
+                        System.out.print(cell.getStringCellValue() + "\t");
+                    }
+                }
+                System.out.println();
+            }
+        }
+
+        // Clean up: Close the workbook and FileInputStream
+        workbook.close();
+        fis.close();
+
+        System.out.println("-------------------------------------------------------------------");
+    }
+}
+
 }
