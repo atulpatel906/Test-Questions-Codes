@@ -19,10 +19,10 @@ public class QuestionTwoA {
 
         // Use more robust selectors instead of absolute XPath
         // Assuming your elements have a class name or meaningful identifiers, use a better selector
-        WebElement getElement1 = driver.findElement(By.cssSelector("span.classname1"));  // Example using class name
-        WebElement getElement2 = driver.findElement(By.cssSelector("span.classname2"));  // Example using class name
+        WebElement getElement1 = driver.findElement(By.cssSelector("span.classname1"));  
+        WebElement getElement2 = driver.findElement(By.cssSelector("span.classname2")); 
         
-        // Print the text of the selected elements
+        
         System.out.println(getElement1.getText());
         System.out.println(getElement2.getText());
 
