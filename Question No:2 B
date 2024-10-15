@@ -1,35 +1,31 @@
 package PackageOne;
  
-import java.util.Iterator;
-import java.util.List;
- 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
- 
-public class questionTwoB {
- 
-          public static void main(String[] args) {
-                  
-                   WebDriver driver = new FirefoxDriver();
-                  
-                   driver.get("C:\\Users\\Atul\\Documents\\foodName.html");
-                  
-                   WebElement tagLable = driver.findElement(By.xpath("html/body/div[1]/span[1]"));
-                  
-                   List<WebElement> names = tagLable.findElements(By.id("ng-bind"));   
-                  
-                   Iterator<WebElement> itr = names.iterator();
-                  
-                   while(itr.hasNext()) {
-                            
-                       WebElement row = itr.next();
-                      
-                       System.out.println(row.getText());
-                      
-                   }
-           
-          }
- 
+public class QuestionTwoB {
+
+    public static void main(String[] args) {
+        // Set up GeckoDriver (replace with the path to your GeckoDriver)
+        System.setProperty("webdriver.gecko.driver", "path_to_geckodriver/geckodriver.exe");
+
+        // Initialize WebDriver
+        WebDriver driver = new FirefoxDriver();
+        
+        // Load the local HTML file
+        driver.get("file:///C:/Users/Atul/Documents/foodName.html");
+        
+        // Find the tag by relative XPath or CSS selector
+        WebElement tagLabel = driver.findElement(By.xpath("//div[1]/span[1]"));
+
+        // Find all elements with the attribute "ng-bind"
+        List<WebElement> names = tagLabel.findElements(By.xpath("//*[@ng-bind]")); // Using the attribute "ng-bind"
+        
+        // Iterate over the elements and print the text
+        Iterator<WebElement> itr = names.iterator();
+        
+        while (itr.hasNext()) {
+            WebElement row = itr.next();
+            System.out.println(row.getText());
+        }
+
+    }
 }
+
