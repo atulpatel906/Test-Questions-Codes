@@ -1,19 +1,21 @@
 package PackageOne;
  
-public class reverseString {
- 
-          public  void reverseEverything(String s) {
-                  
-                             String string = new String("hope you are doing well");
-               
-                             String reverse = new StringBuffer(string).reverse().toString();
-                
-                  System.out.println(reverse);
- 
-          }
-                            
+public class ReverseString {
+
+    // Method to reverse the given string
+    public void reverseEverything(String s) {
+        // Reversing the input string 's'
+        String reverse = new StringBuilder(s).reverse().toString();
+        // Printing the reversed string
+        System.out.println(reverse);
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Create an instance of the class
+        ReverseString rs = new ReverseString();
+        // Call the reverseEverything method with a string
+        rs.reverseEverything("hope you are doing well");
+    }
 }
- 
-//Out Put:
- 
-//llew gniod era uoy epoh
+
