@@ -1,26 +1,24 @@
 package PackageOne;
  
-import java.io.File;
- 
-public class question3A {
- 
-          public static void FileExist(String p){
-                  
-           String filepath ="C:\\\\Users\\\\Atul\\\\Documents\\\\dictonary.doc";
-                  
-                    
-                    File file = new File(filepath);
-           
-                    if ( file.exists()) {
-                    
-                             System.out.println( "File exist");
-                  
-                    }else {
- 
-                             System.out.println( "File is not exist");
-                    
-         }
-         
+public class Question3A {
+
+    public static void main(String[] args) {
+        // Calling the fileExist method to check if the file exists
+        fileExist();
     }
- 
+
+    public static void fileExist() {
+        // Corrected file path, using double backslashes or a forward slash
+        String filepath = "C:\\Users\\Atul\\Documents\\dictionary.doc";
+
+        // Create File object
+        File file = new File(filepath);
+
+        // Check if file exists and print appropriate message
+        if (file.exists()) {
+            System.out.println("File exists");
+        } else {
+            System.out.println("File does not exist");
+        }
+    }
 }
